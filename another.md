@@ -1,2 +1,4 @@
-another file
+//drakian stats
 
+// whampant 
+let attackPower = 5;
