@@ -16,4 +16,4 @@ let sprayDefence = 4;
 let anditaType = "stone"
 let anditaAttackPower = 8;
 let anditaSpeed = 2;
-let sprayDefence = 9;
+let sprayDefence = 8;
