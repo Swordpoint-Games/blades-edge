@@ -1,21 +1,24 @@
 //drakian stats
 
-function startingStats(Type, AttackPower, Speed, Defence) {
-    
+function startingStats(name, type, attackPwr, speed, defence) {
+    return(name, type, attackPwr, speed, defence);
 }
 
 
 // whampant 
-startingStats('Grass', 6, 4, 3);
+var whampant = startingStats ("Whampant", "Grass", 5, 4, 6);
 
 // sprayghost
-startingStats('Ghost', 4, 6, 4);
+var Sprayghost = startingStats ("SprayGhost", "Spirit", 6, 3, 5);
 
 // anditabonia
-startingStats('Lightning', 5, 4, 5);
+var Anditabonia = startingStats ("Anditabonia", "lightning", 5, 6, 7);
 
 // zanbrium
-startingStats('Water', 4, 4, 7);
+var Zanbrium = startingStats ("Zanbrium", "Water", 3, 4, 8);
 
-// brandium
-startingStats('Earth', 6, 3, 6);
+// bramium
+var Brandium = startingStats ("Bramium", "Grass", 3, 4, 8);
+
+
+
