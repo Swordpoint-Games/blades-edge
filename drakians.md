@@ -1,25 +1,21 @@
 //drakian stats
 
-// whampant 
-let whampType = "grass";
-let whampAttackPower = 5;
-let whampSpeed = 7;
-let whampDefence =5;
+function startingStats(Type, AttackPower, Speed, Defence) {
+    
+}
 
-// sprayghast
-let sprayType = "ghost";
-let sprayAttackPower = "poison" + 5;
-let spraySpeed = "fly" + 5;
-let sprayDefence = 4;
+
+// whampant 
+startingStats('Grass', 6, 4, 3);
+
+// sprayghost
+startingStats('Ghost', 4, 6, 4);
 
 // anditabonia
-let anditaType = "stone";
-let anditaAttackPower = 8;
-let anditaSpeed = 2;
-let anditaDefence = 8;
+startingStats('Lightning', 5, 4, 5);
 
 // zanbrium
-let zanType = "stone";
-let zanAttackPower = 6;
-let zanSpeed = 7;
-let zanDenfence = 5;
+startingStats('Water', 4, 4, 7);
+
+// brandium
+startingStats('Earth', 6, 3, 6);
