@@ -18,7 +18,7 @@ var Anditabonia = startingStats ("Anditabonia", "lightning", 5, 6, 7);
 var Zanbrium = startingStats ("Zanbrium", "Water", 3, 4, 8);
 
 // bramium
-var Brandium = startingStats ("Bramium", "Grass", 3, 4, 8);
+var Brandium = startingStats ("Bramium", "Grass", 3, 2, 9);
 
-
-
+// flameo
+var Flameo = startingStats ("Flameo", "Fire", 6, 4, 5);
