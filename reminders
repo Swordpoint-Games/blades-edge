@@ -1,0 +1,31 @@
+// functions
+function() {
+}
+
+const random = () => {
+}
+// end functions
+
+// variables
+ const
+ var 
+ let 
+// end variables
+
+// if else statements
+
+if() {
+
+} else if() {
+
+} else{
+
+}
+// end if else statements
+
+// ways to print to the console
+
+console.log('random');
+
+console.log(`hello ${whatever}`)
+// end ways to print to the console
