@@ -17,4 +17,4 @@ console.log('His base is a place named Blades Edge');
 console.log('We need you to stop him and end Blade for good');
 console.log(`I have much trust in you ${welcome(name)}`);
 
-  vipPass('Grizzlyslayer' || 'EnderDub');
+  vipPass('Grizzlyslayer');
