@@ -6,7 +6,7 @@ if(name === 'Grizzlyslayer' || 'Enderdub'){
 console.log('You get a special game pass boi');
  }
 };
-welcome('Oscar')
+welcome('Grizzlyslayer')
 
 console.log('I have been waiting for you to come.');
 console.log('The world and all of the drakians in it are in serious danger.');
@@ -17,4 +17,4 @@ console.log('His base is a place named Blades Edge');
 console.log('We need you to stop him and end Blade for good');
 console.log(`I have much trust in you ${welcome(name)}`);
 
-  vipPass('Grizzlyslayer');
+  vipPass('Grizzlyslayer' || 'EnderDub');
