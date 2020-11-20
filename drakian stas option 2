@@ -1,0 +1,11 @@
+const drakianBaseAttacks = (typeStat, drakianStat, drakianLevel) => {
+    return(typeStat, drakianStat, drakianLevel);
+}
+
+
+// contact moves all have 2 for typeStat
+if (drakianBaseAttacks.typeStat === 2) {
+    return contact
+}
+
+let randomDrakian = this.drakianBaseAttacks(2, 3, 1);
