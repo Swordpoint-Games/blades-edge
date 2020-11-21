@@ -29,3 +29,9 @@ console.log('random');
 
 console.log(`hello ${whatever}`)
 // end ways to print to the console
+
+let hi = ['hallo];
+console.log(hi[3]);
+
+let yeetExample = ['hallo', 'yeet', 'hi'];
+yeetExample[0] = ('hillo');
