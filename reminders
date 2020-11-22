@@ -7,9 +7,9 @@ const random = () => {
 // end functions
 
 // variables
- const
- var 
- let 
+ const // cant be changed
+ var  // more global
+ let  // less global
 // end variables
 
 // if else statements
