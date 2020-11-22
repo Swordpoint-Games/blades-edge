@@ -2,7 +2,7 @@ function welcome(name = 'player'){
     console.log(`Welcome ${name}!`);
 }
 const vipPass = function(name){
-if(name === 'Grizzlyslayer' || 'Enderdub'){
+if(name === 'Grizzlyslayer' || 'Enderdub' || 'vandert1'){
 console.log('You get a special game pass boi');
  }
 };
