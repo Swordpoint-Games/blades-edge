@@ -63,3 +63,16 @@ changeArray(randomArray);
 const numberClusters = [[1, 2], [3, 4], [5, 6]];
 const target = numberClusters[2][1]; // this means it is six if it was [2][0] it would be five.
 console.log(target); 
+
+for (let rando = 5; rando < 11; rando ++) {
+  console.log(rando); // logs 5 6 7 8 9 10 to the console
+}
+
+for (let counter = 3; counter >= 0; counter--){
+  console.log(counter);
+} // logs 3 2 1 0 to the console
+
+const vacationSpots = ['Bali', 'Paris', 'Tulum'];
+for (let i = 0; i < vacationSpots.length; i++){
+  console.log('I would love to visit ' + vacationSpots[i]);
+} // prints "I would love to visit Bali", "I would love to visit Paris", "I would love to visit Tulum"
