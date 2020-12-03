@@ -76,3 +76,17 @@ const vacationSpots = ['Bali', 'Paris', 'Tulum'];
 for (let i = 0; i < vacationSpots.length; i++){
   console.log('I would love to visit ' + vacationSpots[i]);
 } // prints "I would love to visit Bali", "I would love to visit Paris", "I would love to visit Tulum"
+
+// terminal reminders
+ls // this makes a list of what folders and working directories you are in 
+pwd // this prints current working directory
+cd // this changes directory
+cd .. // this changes directory to the previous one
+cd. // this tells the comand line that you are in this directory
+touch // this adds a file
+mkdir // this adds a directory 
+rm // (BE CAREFUL WITH THIS!) this removes a file
+open // this opens a directory or a folders
+nano // this lets you edit a folder in the terminal
+rm -r // this removes a directory
+clear // cleans your terminal but dos not delete anything
