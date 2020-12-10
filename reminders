@@ -90,3 +90,48 @@ open // this opens a directory or a folders
 nano // this lets you edit a folder in the terminal
 rm -r // this removes a directory
 clear // cleans your terminal but dos not delete anything
+ 
+// nested loops
+let bobsFollowers = ['Joe', 'Marta', 'Sam', 'Erin'];
+let tinasFollowers = ['Sam', 'Marta', 'Elle'];
+let mutualFollowers = [];
+
+for (let i = 0; i < bobsFollowers.length; i++) {
+  for (let j = 0; j < tinasFollowers.length; j++) {
+    if (bobsFollowers[i] === tinasFollowers[j]) {
+      mutualFollowers.push(bobsFollowers[i]);
+    }
+  }
+};
+// what this does it it calls three variables. then it calls both bobsFollowers' arguments and tinasFollowers' arguments. then is assaigns the arguments from both of them that are the same to the mutualFollowers variable 
+
+const cards = ['diamond', 'spade', 'heart', 'club'];
+
+the while loop is another loop. the syntax is described below. it is a better loop for looping things that you do not know the length of
+
+let currentCard
+while(currentCard != 'spade') {
+  currentCard = cards[Math.floor(Math.random() * 4)];
+  console.log(currentCard);
+} // this assaigns a variable named currentCard. Inside the while loop it checks if the currentCard does not equal spade. if it doesnt it assaigns currentCard to cards[Math.floor(Math.random() * 4)]; the last thing that this block of code does is logs currentCard to the console.
+
+do {
+
+} // this is the syntax for a do loop.
+
+let cupsOfSugarNeeded = 3;
+let cupsAdded = 0;
+
+do {
+ cupsAdded++
+} while (cupsAdded < cupsOfSugarNeeded); //this will automatically add 1 to cupsAdded and after that it will add the other 2.
+
+const rapperArray = ["Lil' Kim", "Jay-Z", "Notorious B.I.G.", "Tupac"];
+for (let i = 0; i < rapperArray.length; i++){
+  console.log(rapperArray[i]);
+  if (rapperArray[i] === 'Notorious B.I.G.'){
+    break;
+  }
+} // logs everyones name except toupac to the console
+
+the 'i' in an array stands for a number. you need to use the letter 'i' usually because it stands for index. you can call it anywhere inside your loop.
