@@ -135,3 +135,21 @@ for (let i = 0; i < rapperArray.length; i++){
 } // logs everyones name except toupac to the console
 
 the 'i' in an array stands for a number. you need to use the letter 'i' usually because it stands for index. you can call it anywhere inside your loop.
+
+.push // will push something somewhere to somewhere else. The syntax is below
+hi.push(bye); // this pushes a variable, bye, to a variable, hi.
+
+. toUpperCase // makes everything that this logs to the console. upper case.
+.join // this joins two things together syntax below
+console.log(resultArray.join('').toUpperCase());
+
+const fruits = ['mango', 'papaya', 'pineapple', 'apple'];
+fruits.forEach (fruitIWant => console.log('I want to eat a ' + fruitIWant)); // what this does is it calls the fruits array and reassigns it in the callback function to fruitIwant. It then logs I want to eat a (mango) then etc.
+
+.map() // returns a different array.
+
+/ // this is the divide symbol
+* // this is the multiply symbol
++ // this is the add symbol
+- // this is the subtract symbol
+
