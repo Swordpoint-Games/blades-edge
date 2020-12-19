@@ -224,10 +224,16 @@ other iteration methods to know
 
 15. The shift() method removes the first element from an array and returns that removed element. This method changes the length of the array.
 
+// advanced Global_Objects
 
+this // calling "this" inside an object will allow you to use the elements of the same object.
+// when using "this" do not use it with arrow function syntax.
 
+// a good way to tell other coder and yourself not to mess with a method in an object is to put a "_" in front of it
 
+get // getter methods are good when calling elements into the same object. Just put the get before you call a method.
 
+set // set is a method that will reassaign an element in an object to something else. The syntax for it is the same as a getter. you need a parameter in a setter method.
 
 
 
