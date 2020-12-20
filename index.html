@@ -39,7 +39,7 @@
 
     function preload ()
     {
-        this.load.tilemapTMX('map', '/Users/oscar/Tiled/Reguren Town.tmx');
+        this.load.tilemapTMX('map', '/Users/oscar/Tiled/Reguren Town.twx');
         this.load.spriteSheet('player', '/Users,oscar/Tiled/sprite set.png', {frameWidth: 16, frameHeight: 16});
     }
 
@@ -49,7 +49,7 @@
         var layer = map.createLayer(0, tileset, 0, 0);
     layer.setScale(2);
 
-        this.anims.creat({
+        this.anims.create({
             key: 'left',
             frames: this.anims.generateFrameNumbers('player', { start: 1, end: 2}),
             frameRate: 10,
@@ -67,7 +67,7 @@
             frameRate: 10,
             repeat: -1
         });
-        this.anims.creat({
+        this.anims.create({
             key: 'down',
             frames: this.anims.generateFrameNumbers('player', { start: 7, end: 8}),
             frameRate: 10,
@@ -81,7 +81,7 @@
         this.physics.add.collider(player, layer);
 
         this.cameras.main.setBounds(0,0, map.widthInPixils, map.heightInPixils);
-        this.cameras.main.startFloow(player);
+        this.cameras.main.startFollow(player);
 
         degubGraphics = this.add.graphics();
 
