@@ -235,7 +235,7 @@ get // getter methods are good when calling elements into the same object. Just 
 
 set // set is a method that will reassaign an element in an object to something else. The syntax for it is the same as a getter. you need a parameter in a setter method.
 
-
+// factory objects are very good if you want to make a lot of one type of thing in a bunch of different ways.
 
 
 
