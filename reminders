@@ -237,6 +237,30 @@ set // set is a method that will reassaign an element in an object to something 
 
 // factory objects are very good if you want to make a lot of one type of thing in a bunch of different ways.
 
+// another way to do a factory function is to use the const keyword and assagin it using arrow function examples below
+
+const robotFactory = (model, mobile) => {
+  return {
+    model,
+    mobile,
+    beep() {
+      console.log('Beep Boop');
+    }
+  }
+}
+
+// a good way to assaign an element in an object is the following: (if the object is vampire of course!)
+const { residence } = vampire; 
+console.log(residence); // Prints 'Transylvania'
+
+// if you want to know the elements in one array use the following code
+Object.keys(vampire);
+
+// if you want to return the keys and values of properties in an object do the following code
+Object.entries(vampire);
+
+// if you wanted to make assign a new object but change it up a bit or not you can do the following code
+const rando = Object.assign({vampireWife: true, vampireHusband: false}, vampire);
 
 
 
