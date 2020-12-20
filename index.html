@@ -75,12 +75,12 @@
         });
 
         player = this.physics.add.sprite(100, 100, 'player', 1)
-            .setScale;
+            .setScale(2);
         player.setSize(10,10, false);
 
         this.physics.add.collider(player, layer);
 
-        this.cameras.main.setBounds(0,0, map.widthInPixils, map.heightInPixils);
+        this.cameras.main.setBounds(0, 0, map.widthInPixils, map.heightInPixils);
         this.cameras.main.startFollow(player);
 
         degubGraphics = this.add.graphics();
