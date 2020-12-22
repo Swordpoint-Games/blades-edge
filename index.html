@@ -39,37 +39,40 @@
 
     function preload ()
     {
-        this.load.tilemapTMX('map', '/Users/oscar/Tiled/Reguren Town.twx');
-        this.load.spriteSheet('player', '/Users,oscar/Tiled/sprite set.png', {frameWidth: 16, frameHeight: 16});
+        this.load.image('tiles', 'assets/tilemaps/tiles/pokemon_tileset_32.png');
+        this.load.tilemapCSV('map', 'assets/tilemaps/csv/test.csv');
+        this.load.spritesheet('player', 'assets/sprites/spaceman.png', {frameWidth: 16, frameHeight: 16});
     }
 
     function create ()
     {
-        map = this.make.tilemap({key: 'map', tileWidth: 60, tileWidth: 60 });
-        var layer = map.createLayer(0, tileset, 0, 0);
-    layer.setScale(2);
+        map = this.make.tilemap({key: 'map', tileWidth: 32, tileWidth: 32 });
+        var tileset = map.addTilesetImage('tiles');
+        var layer = map.createStaticLayer(0, tileset, 0, 0);
+        layer.setScale(2);
+        map.setCollisionByExclusion([1340], true);
 
         this.anims.create({
             key: 'left',
-            frames: this.anims.generateFrameNumbers('player', { start: 1, end: 2}),
+            frames: this.anims.generateFrameNumbers('player', { start: 8, end: 9 }),
             frameRate: 10,
             repeat: -1
         });
         this.anims.create({
             key: 'right',
-            frames: this.anims.generateFrameNumbers('player', { start: 3, end: 4 }),
+            frames: this.anims.generateFrameNumbers('player', { start: 1, end: 2 }),
             frameRate: 10,
             repeat: -1
         });
         this.anims.create({
             key: 'up',
-            frames: this.anims.generateFrameNumbers('player', { start: 5, end: 6 }),
+            frames: this.anims.generateFrameNumbers('player', { start: 11, end: 13 }),
             frameRate: 10,
             repeat: -1
         });
         this.anims.create({
             key: 'down',
-            frames: this.anims.generateFrameNumbers('player', { start: 7, end: 8}),
+            frames: this.anims.generateFrameNumbers('player', { start: 4, end: 6 }),
             frameRate: 10,
             repeat: -1
         });
