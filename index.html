@@ -27,32 +27,28 @@
             update: update
         }
     };
-
-    var game = new Phaser.Game(config);
-    var map;
-    var cursors;
-    var debugGraphics;
-    var helpText;
     var player;
-    var showDebug = false;
-    var currentTileset = 1;
-
-    function preload ()
-    {
-        this.load.image('tiles', 'assets/tilemaps/tiles/pokemon_tileset_32.png');
-        this.load.tilemapCSV('map', 'assets/tilemaps/csv/test.csv');
-        this.load.spritesheet('player', 'assets/sprites/spaceman.png', {frameWidth: 16, frameHeight: 16});
+    
+    function preload () {
+       this.load.image('tiles', 'users/oscar/Coding/blades-edge/assets/tilemaps/tiles/pokemon_tileset_32.png');
+       this.load.tilesetJSON('map', 'users/oscar/Tiled/test.json');
+       this.load.spritesheet('player', 'assets/sprites/spaceman.png', {frameWidth: 16, frameHeight: 16});
     }
 
-    function create ()
-    {
-        map = this.make.tilemap({key: 'map', tileWidth: 32, tileWidth: 32 });
-        var tileset = map.addTilesetImage('tiles');
-        var layer = map.createStaticLayer(0, tileset, 0, 0);
-        layer.setScale(2);
-        map.setCollisionByExclusion([1340], true);
-
-        this.anims.create({
+    function create () {
+        const map = this.make.tilemap({key: 'map'});
+        const tileset = map.addTilesetImage('pokemon_tileset_32.png');
+        const belowLayer = map.createStaticLayer('below player', tileset, 0, 0);
+        const worldLayer = map.createStaticLayer('world', tileset, 0, 0);
+        const aboveLayer = map.createStaticLayer('above player', tileset, 0, 0);
+        worldLayer.setCollisionByProperty({collides = true});
+        const debugGraphics = this.add.graphics().setAlpha(0.75);
+worldLayer.renderDebug(debugGraphics, {
+  tileColor: null, // Color of non-colliding tiles
+  collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+  faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+});
+this.anims.create({
             key: 'left',
             frames: this.anims.generateFrameNumbers('player', { start: 8, end: 9 }),
             frameRate: 10,
@@ -102,46 +98,46 @@
         helpText.setScrollFactor(0);
         updateHelpText();
     }
+    
 
     function update (time, delta) {
         player.body.setVelocity(0);
 
-        if (cursors.left.isDown) {
-            player.body.setVelocityX(-200);
-        }
-        else if (cursors.right.isDown) {
-            player.body.setVelocityX(200);
-        }
-
-        if(cursors.up.isDown) {
-            player.body.setVelocityY(-200);
-        }
-        else if (cursors.down.isDown)
-    {
-        player.body.setVelocityY(200);
-    }
-    if (cursors.left.isDown)
-    {
-        player.anims.play('left', true);
-    }
-    else if (cursors.right.isDown)
-    {
-        player.anims.play('right', true);
-    }
-    else if (cursors.up.isDown)
-    {
-        player.anims.play('up', true);
-    }
-    else if (cursors.down.isDown)
-    {
-        player.anims.play('down', true);
-    }
-    else
-    {
-        player.anims.stop();
-    }
+if (cursors.left.isDown) {
+    player.body.setVelocityX(-200);
+}
+else if (cursors.right.isDown) {
+    player.body.setVelocityX(200);
 }
 
+if(cursors.up.isDown) {
+    player.body.setVelocityY(-200);
+}
+else if (cursors.down.isDown)
+{
+player.body.setVelocityY(200);
+}
+if (cursors.left.isDown)
+{
+player.anims.play('left', true);
+}
+else if (cursors.right.isDown)
+{
+player.anims.play('right', true);
+}
+else if (cursors.up.isDown)
+{
+player.anims.play('up', true);
+}
+else if (cursors.down.isDown)
+{
+player.anims.play('down', true);
+}
+else
+{
+player.anims.stop();
+}
+}
 function drawDebug () {
     debugGraphics.clear();
 
@@ -152,14 +148,6 @@ function drawDebug () {
             faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Colliding face edges
         });
     }  
-
-    updateHelpText();
-}
-
-function updateHelpText () {
-    helpText.setText (
-        'Arrow keys to move.'
-    );
 }
     
     </script>
