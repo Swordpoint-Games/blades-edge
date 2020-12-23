@@ -27,12 +27,14 @@
             update: update
         }
     };
-    var player;
+
+    let player;
     
     function preload () {
        this.load.image('tiles', 'users/oscar/Coding/blades-edge/assets/tilemaps/tiles/pokemon_tileset_32.png');
        this.load.tilesetJSON('map', 'users/oscar/Tiled/test.json');
        this.load.spritesheet('player', 'assets/sprites/spaceman.png', {frameWidth: 16, frameHeight: 16});
+       
     }
 
     function create () {
@@ -42,113 +44,33 @@
         const worldLayer = map.createStaticLayer('world', tileset, 0, 0);
         const aboveLayer = map.createStaticLayer('above player', tileset, 0, 0);
         worldLayer.setCollisionByProperty({collides = true});
-        const debugGraphics = this.add.graphics().setAlpha(0.75);
-worldLayer.renderDebug(debugGraphics, {
-  tileColor: null, // Color of non-colliding tiles
-  collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-  faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
-});
-this.anims.create({
-            key: 'left',
-            frames: this.anims.generateFrameNumbers('player', { start: 8, end: 9 }),
-            frameRate: 10,
-            repeat: -1
-        });
-        this.anims.create({
-            key: 'right',
-            frames: this.anims.generateFrameNumbers('player', { start: 1, end: 2 }),
-            frameRate: 10,
-            repeat: -1
-        });
-        this.anims.create({
-            key: 'up',
-            frames: this.anims.generateFrameNumbers('player', { start: 11, end: 13 }),
-            frameRate: 10,
-            repeat: -1
-        });
-        this.anims.create({
-            key: 'down',
-            frames: this.anims.generateFrameNumbers('player', { start: 4, end: 6 }),
-            frameRate: 10,
-            repeat: -1
-        });
-
-        player = this.physics.add.sprite(100, 100, 'player', 1)
-            .setScale(2);
-        player.setSize(10,10, false);
-
-        this.physics.add.collider(player, layer);
-
-        this.cameras.main.setBounds(0, 0, map.widthInPixils, map.heightInPixils);
-        this.cameras.main.startFollow(player);
-
-        degubGraphics = this.add.graphics();
-
-        this.input.keyboard.on('down_67', function (event){
-            showDebug = !showDebug;
-            drawDebug();
-        });
-
-        cursors = this.input.keyboard.createCursorKeys();
-
-        helpText = this.add.text(16, 16, '', {
-            fontSize: '20px',
-            fill: '#ffffff'
-        });
-        helpText.setScrollFactor(0);
-        updateHelpText();
+        const spawnPoint = map.findObject("Objects", obj => obj.name === "Spawn Point");
+        player = this.physics.add.sprite(spawnPoint.x, spawnPoint.y, 'spaceman', 'player' );
+        this.physics.add.collider(player, worldLayer);
     }
-    
 
     function update (time, delta) {
         player.body.setVelocity(0);
 
+// Horizontal movement
 if (cursors.left.isDown) {
-    player.body.setVelocityX(-200);
-}
-else if (cursors.right.isDown) {
-    player.body.setVelocityX(200);
+  player.body.setVelocityX(-100);
+} else if (cursors.right.isDown) {
+  player.body.setVelocityX(100);
 }
 
-if(cursors.up.isDown) {
-    player.body.setVelocityY(-200);
+// Vertical movement
+if (cursors.up.isDown) {
+  player.body.setVelocityY(-100);
+} else if (cursors.down.isDown) {
+  player.body.setVelocityY(100);
 }
-else if (cursors.down.isDown)
-{
-player.body.setVelocityY(200);
-}
-if (cursors.left.isDown)
-{
-player.anims.play('left', true);
-}
-else if (cursors.right.isDown)
-{
-player.anims.play('right', true);
-}
-else if (cursors.up.isDown)
-{
-player.anims.play('up', true);
-}
-else if (cursors.down.isDown)
-{
-player.anims.play('down', true);
-}
-else
-{
-player.anims.stop();
-}
-}
-function drawDebug () {
-    debugGraphics.clear();
 
-    if (showDebug) {
-        map.renderDebug(debugGraphics, {
-            tileColor: null, // Non-colliding tiles
-            collidingTileColor: new Phaser.Display.Color(243, 134, 48, 200), // Colliding tiles
-            faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Colliding face edges
-        });
-    }  
+// Normalize and scale the velocity so that player can't move faster along a diagonal
+player.body.velocity.normalize().scale(speed);
 }
+
+
     
     </script>
 
