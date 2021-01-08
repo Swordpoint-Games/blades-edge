@@ -34,6 +34,11 @@
     var debugGraphics;
     var helpText;
     var player;
+    var pad;
+    var stick;
+    var buttonA;
+    var buttonB;
+    var buttonC;
     var showDebug = false;
     var currentTileset = 1;
     
@@ -42,7 +47,7 @@
     {
         this.load.image('tiles', 'assets/tilemaps/tiles/pokemon_tileset_32.png');
         this.load.tilemapCSV('map', 'assets/tilemaps/csv/test.csv');
-        this.load.spritesheet('player', 'assets/sprites/sprite.png', {frameWidth: 16, frameHeight: 16});
+        this.load.spritesheet('player', 'assets/sprites/spaceman.png', {frameWidth: 16, frameHeight: 16});
     }
 
     var indicator;
@@ -144,6 +149,10 @@
     {
         player.anims.stop();
     }
+    const button = this.add.sprite( 100, 100, 'button')
+	.setInteractive()
+	.on('pointerdown', () => button.setScale( 1.1 ))
+	.on('pointerup', () => button.setScale( 1 ));
 }
 
 function drawDebug () {
