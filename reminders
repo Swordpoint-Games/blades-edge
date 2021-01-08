@@ -262,6 +262,21 @@ Object.entries(vampire);
 // if you wanted to make assign a new object but change it up a bit or not you can do the following code
 const rando = Object.assign({vampireWife: true, vampireHusband: false}, vampire);
 
+// classes
+
+// classes are a bit like objects but they do slightly different things and their syntax is slightly different an example below
+class Surgeon {
+  constructor(name, department) {
+    this.name = name;
+    this.department = department;
+  }
+}
+
+// the syntax of getter methods of classes are different from objects seeing as you dont put commas art the end of the getter methods
+
+// you can create parent classes and child classes the syntax for these is below.
+
+
 
 
 
