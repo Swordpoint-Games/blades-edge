@@ -10,9 +10,16 @@
         margin: 0 !important;
         padding: 0 !important;
     }
-</style>
+    </style>
 
     <script>
+    // Check touch input
+	var IS_TOUCH = false;
+	window.addEventListener('touchstart', function()
+	{			
+		IS_TOUCH = true;
+	});
+
     var config = {
         type: Phaser.WEBGL,
         title: "Blade's Edge",
@@ -128,7 +135,7 @@
             // dir: '8dir',   // 'up&down'|0|'left&right'|1|'4dir'|2|'8dir'|3
             // forceMin: 16,
             // enable: true
-        })
+        });
 
         this.scale.on('resize', resize, this);
 
@@ -141,6 +148,8 @@
     }
 
     function update (time, delta) {
+        joyStick.setVisible(IS_TOUCH);
+
         player.body.setVelocity(0);
 
         var cursorKeys = joyStick.createCursorKeys();
