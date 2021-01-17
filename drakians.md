@@ -16,4 +16,6 @@ var Bramium = startingStats ("Bramium", "Grass", 3, 2, 9);
 
 // flameo
 var Flameo = startingStats ("Flameo", "Fire", 6, 4, 5);
- la;fjsadl;k
+
+test hi oscar
+
