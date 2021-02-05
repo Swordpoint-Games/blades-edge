@@ -1,9 +1,5 @@
 # blades-edge
-Blades edge is an AMAZING game
-blades edge is about a drakian trainer that is trying to stop Blade.
-Blade is an organization that wants to stop any other people from training drakians.
-your goal is to complete your quest of getting rid of Blade.
-Blade's secret base is at a place called Blade's edge (pretty obvious)
+Long ago, there was peace in the land of Derante. Humans lived side by side with magical creatures known as Drakians. Some were kept as pets, others partners in journeys, and even more to help with work. But then, Derante was attacked by a group calling themselves "Blade". They claimed that they were the rightful rulers of the land, and, knowing that the many powers of Drakians were the only things that could stop them, they captured all Drakians, and took over Derante. 500 years later, Drakians, who were thought by the citezens to be extinct, are appearing again, and a group of people, known simply as The Beacon, are trying to locate all of the Mystic Drakians, the most powerful of all the Drakians, in order to thwart Blades secret plans and take back Derante...
 
 ## Instructions
 
