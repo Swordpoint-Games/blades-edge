@@ -51,7 +51,7 @@ Now you can either go to your terminal, change directory to where you want to st
 ### Get access to commit to directly to this repository
 Ask an existing contributor like Oscar to add you as a collaborator to this repository. Give him your GitHub profile name and he can add you.
 
-###Learn JavaScript
+### Learn JavaScript
 
 
 
