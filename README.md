@@ -1,4 +1,4 @@
-# blades-edge
+# Blade's Edge
 Long ago, there was peace in the land of Derante. Humans lived side by side with magical creatures known as Drakians. Some were kept as pets, others partners in journeys, and even more to help with work. But then, Derante was attacked by a group calling themselves "Blade". They claimed that they were the rightful rulers of the land, and, knowing that the many powers of Drakians were the only things that could stop them, they captured all Drakians, and took over Derante. 500 years later, Drakians, who were thought by the citezens to be extinct, are appearing again, and a group of people, known simply as The Beacon, are trying to locate all of the Mystic Drakians, the most powerful of all the Drakians, in order to thwart Blades secret plans and take back Derante...
 
 ## Instructions
@@ -51,7 +51,13 @@ Now you can either go to your terminal, change directory to where you want to st
 ### Get access to commit to directly to this repository
 Ask an existing contributor like Oscar to add you as a collaborator to this repository. Give him your GitHub profile name and he can add you.
 
+###Learn JavaScript
 
+
+
+The Programming Language we use is a version of JavaScript that is optimized for top down and 2d games, so it is a good idea to learn JavaScript before Phaser.
+
+* Codecademy has a JavaScript course
 ### Learn Phaser 
 
 Phaser is the Javascript game engine we use. There is a lot to learn.
