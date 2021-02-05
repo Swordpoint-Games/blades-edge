@@ -5,7 +5,7 @@ Long ago, there was peace in the land of Derante. Humans lived side by side with
 
 ### Summary
 
-* Lear JavaScript
+* Learn JavaScript
 * Install and learn VS Code
 * Install and learn Git
 * Install and learn node.js
