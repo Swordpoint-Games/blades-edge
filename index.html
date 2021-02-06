@@ -5,15 +5,26 @@
     <script src="//cdn.jsdelivr.net/npm/phaser@3.24.1/dist/phaser.js"></script>
 </head>
 <body>
+    <style type="text/css">
+    body {    
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    </style>
 
     <script>
+    // Check touch input
+	var IS_TOUCH = false;
+	window.addEventListener('touchstart', function()
+	{			
+		IS_TOUCH = true;
+	});
+
     var config = {
         type: Phaser.WEBGL,
         title: "Blade's Edge",
-        width: 1900,
-        height: 900,
         backgroundColor: '#2d2d2d',
-        dissableContextMenu: true,
+        disableContextMenu: true,
         pixelArt: true,
         physics: {
             default: 'arcade',
@@ -25,7 +36,11 @@
             preload: preload,
             create: create,
             update: update
-        }
+        },
+        scale: {
+            mode: Phaser.Scale.RESIZE,
+            autoCenter: Phaser.Scale.CENTER_BOTH
+        },
     };
 
     var game = new Phaser.Game(config);
@@ -34,6 +49,7 @@
     var debugGraphics;
     var helpText;
     var player;
+    var joyStick;
     var showDebug = false;
     var currentTileset = 1;
     
@@ -63,6 +79,8 @@
         this.load.image('tiles', 'assets/tilemaps/tiles/pokemon_tileset_32.png');
         this.load.tilemapTiledJSON('map', 'assets/tilemaps/json/start.json');
         this.load.spritesheet('player', 'assets/sprites/spaceman.png', {frameWidth: 16, frameHeight: 16});
+        this.load.plugin('rexvirtualjoystickplugin', 'https://raw.githubusercontent.com/rexrainbow/phaser3-rex-notes/master/dist/rexvirtualjoystickplugin.min.js', true);
+
     }
 
     var indicator;
@@ -135,67 +153,93 @@
         });
         helpText.setScrollFactor(0);
         updateHelpText();
+
+
+        // Create Joystick
+        joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
+            x: 200,
+            y: this.sys.game.canvas.height - 200,
+            radius: 100,
+            base: this.add.circle(0, 0, 100, 0x888888),
+            thumb: this.add.circle(0, 0, 50, 0xcccccc),
+            // dir: '8dir',   // 'up&down'|0|'left&right'|1|'4dir'|2|'8dir'|3
+            // forceMin: 16,
+            // enable: true
+        });
+
+        this.scale.on('resize', resize, this);
+
+        //this.text = this.add.text(0, 0);
+        //this.dumpJoyStickState();
+    }
+
+    function resize(gameSize) {
+        joyStick.setPosition(200, gameSize.height - 200);
     }
 
     function update (time, delta) {
+        joyStick.setVisible(IS_TOUCH);
+
         player.body.setVelocity(0);
 
-        if (cursors.left.isDown) {
+        var cursorKeys = joyStick.createCursorKeys();
+
+        if (cursors.left.isDown || cursorKeys.left.isDown) {
             player.body.setVelocityX(-200);
         }
-        else if (cursors.right.isDown) {
+        else if (cursors.right.isDown || cursorKeys.right.isDown) {
             player.body.setVelocityX(200);
         }
 
-        if(cursors.up.isDown) {
+        if(cursors.up.isDown || cursorKeys.up.isDown) {
             player.body.setVelocityY(-200);
         }
-        else if (cursors.down.isDown)
-    {
-        player.body.setVelocityY(200);
-    }
-    if (cursors.left.isDown)
-    {
-        player.anims.play('left', true);
-    }
-    else if (cursors.right.isDown)
-    {
-        player.anims.play('right', true);
-    }
-    else if (cursors.up.isDown)
-    {
-        player.anims.play('up', true);
-    }
-    else if (cursors.down.isDown)
-    {
-        player.anims.play('down', true);
-    }
-    else
-    {
-        player.anims.stop();
+        else if (cursors.down.isDown || cursorKeys.down.isDown)
+        {
+            player.body.setVelocityY(200);
+        }
+        if (cursors.left.isDown || cursorKeys.left.isDown)
+        {
+            player.anims.play('left', true);
+        }
+        else if (cursors.right.isDown || cursorKeys.right.isDown)
+        {
+            player.anims.play('right', true);
+        }
+        else if (cursors.up.isDown || cursorKeys.up.isDown)
+        {
+            player.anims.play('up', true);
+        }
+        else if (cursors.down.isDown || cursorKeys.down.isDown)
+        {
+            player.anims.play('down', true);
+        }
+        else
+        {
+            player.anims.stop();
+        }
+
     }
 
-}
+    function drawDebug () {
+        debugGraphics.clear();
 
-function drawDebug () {
-    debugGraphics.clear();
+        if (showDebug) {
+            map.renderDebug(debugGraphics, {
+                tileColor: null, // Non-colliding tiles
+                collidingTileColor: new Phaser.Display.Color(243, 134, 48, 200), // Colliding tiles
+                faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Colliding face edges
+            });
+        }  
 
-    if (showDebug) {
-        map.renderDebug(debugGraphics, {
-            tileColor: null, // Non-colliding tiles
-            collidingTileColor: new Phaser.Display.Color(243, 134, 48, 200), // Colliding tiles
-            faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Colliding face edges
-        });
-    }  
+        updateHelpText();
+    }
 
-    updateHelpText();
-}
-
-function updateHelpText () {
-    helpText.setText (
-        'Arrow keys to move.'
-    );
-}
+    function updateHelpText () {
+        helpText.setText (
+            'Arrow keys to move.'
+        );
+    }
 
     
     </script>
