@@ -38,10 +38,30 @@
     var currentTileset = 1;
     
 
+//     function preload() {
+//   this.load.image("tiles", "../assets/tilesets/tuxmon-sample-32px-extruded.png");
+//   this.load.tilemapTiledJSON("map", "../assets/tilemaps/tuxemon-town.json");
+// }
+
+// function create() {
+//   const map = this.make.tilemap({ key: "map" });
+
+//   // Parameters are the name you gave the tileset in Tiled and then the key of the tileset image in
+//   // Phaser's cache (i.e. the name you used in preload)
+//   const tileset = map.addTilesetImage("tuxmon-sample-32px-extruded", "tiles");
+
+//   // Parameters: layer name (or index) from Tiled, tileset, x, y
+//   const belowLayer = map.createStaticLayer("Below Player", tileset, 0, 0);
+//   const worldLayer = map.createStaticLayer("World", tileset, 0, 0);
+//   const aboveLayer = map.createStaticLayer("Above Player", tileset, 0, 0);
+// }
+
+
+
     function preload ()
     {
         this.load.image('tiles', 'assets/tilemaps/tiles/pokemon_tileset_32.png');
-        this.load.tilemapCSV('map', 'assets/tilemaps/csv/test.csv');
+        this.load.tilemapTiledJSON('map', 'assets/tilemaps/json/start.json');
         this.load.spritesheet('player', 'assets/sprites/spaceman.png', {frameWidth: 16, frameHeight: 16});
     }
 
@@ -51,11 +71,22 @@
     function create ()
     {
         map = this.make.tilemap({key: 'map', tileWidth: 32, tileWidth: 32 });
-        var tileset = map.addTilesetImage('tiles');
-        var layer = map.createStaticLayer(0, tileset, 0, 0);
-        layer.setScale(2);
-        map.setCollisionByExclusion([1340], true);
+        var tileset = map.addTilesetImage('pokemon_tileset_32', 'tiles');
 
+        var bottomLayer = map.createStaticLayer("bottom", tileset, 0, 0);
+        var belowLayer = map.createStaticLayer("below", tileset, 0, 0);
+        var worldLayer = map.createStaticLayer("world", tileset, 0, 0);
+        var aboveLayer = map.createStaticLayer("above", tileset, 0, 0);
+
+        worldLayer.setCollisionByProperty({ collides: true });
+        aboveLayer.setDepth(10);
+        const debugGraphics = this.add.graphics().setAlpha(0.75);
+        worldLayer.renderDebug(debugGraphics, {
+            tileColor: null, // Color of non-colliding tiles
+            collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+            faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
+        });
+       
         this.anims.create({
             key: 'left',
             frames: this.anims.generateFrameNumbers('player', { start: 8, end: 9 }),
@@ -83,9 +114,8 @@
 
         player = this.physics.add.sprite(100, 100, 'player', 1)
             .setScale(2);
-        player.setSize(10,10, false);
-
-        this.physics.add.collider(player, layer);
+        
+        this.physics.add.collider(player, worldLayer);
 
         this.cameras.main.setBounds(0, 0, map.widthInPixils, map.heightInPixils);
         this.cameras.main.startFollow(player);
