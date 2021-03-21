@@ -1,3 +1,4 @@
+// Kept this just to use as example
 export default class FpsText extends Phaser.GameObjects.Text {
   constructor(scene) {
     super(scene, 10, 10, '', { color: 'black', fontSize: '28px' })

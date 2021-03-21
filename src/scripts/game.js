@@ -4,9 +4,6 @@ import '@babel/polyfill'
 import PreloadScene from './scenes/preloadScene'
 import MainScene from './scenes/mainScene'
 
-const DEFAULT_WIDTH = 1280
-const DEFAULT_HEIGHT = 720
-
 const config = {
   title: "Blade's Edge",
   type: Phaser.AUTO,
@@ -20,11 +17,7 @@ const config = {
   },  
   physics: {
     default: 'arcade',
-    arcade: {
-        gravity: { y: 0 }
-    }
   },
-
   scene: [PreloadScene, MainScene],
 }
 

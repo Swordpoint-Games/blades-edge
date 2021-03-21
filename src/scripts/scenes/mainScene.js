@@ -1,11 +1,10 @@
-import PhaserLogo from '../objects/phaserLogo'
-import FpsText from '../objects/fpsText'
+// Just to see how to import objects as example
+//import PhaserLogo from '../objects/phaserLogo'
+//import FpsText from '../objects/fpsText'
 
 export default class MainScene extends Phaser.Scene {
-  fpsText
   map
   cursors
-  debugGraphics
   helpTextplayer
   joyStick
   showDebug
@@ -15,9 +14,16 @@ export default class MainScene extends Phaser.Scene {
     super({ key: 'MainScene' })
   }
 
+  preload() {
+    this.load.image('tiles', 'assets/tilemaps/tiles/pokemon_tileset_32.png');
+    this.load.tilemapTiledJSON('map', 'assets/tilemaps/json/start.json');
+    this.load.spritesheet('player', 'assets/sprites/spaceman.png', {frameWidth: 16, frameHeight: 16});
+  }
+
   create() {
-    this.fpsText = new FpsText(this)
-    this.map = this.make.tilemap({key: 'map', tileWidth: 32, tileWidth: 32 });
+    // Keeping as example
+    //this.fpsText = new FpsText(this)
+    this.map = this.make.tilemap({key: 'map', tileWidth: 32, tileHeight: 32 });
     var tileset = this.map.addTilesetImage('pokemon_tileset_32', 'tiles');
 
     var bottomLayer = this.map.createStaticLayer("bottom", tileset, 0, 0);
@@ -27,8 +33,9 @@ export default class MainScene extends Phaser.Scene {
 
     worldLayer.setCollisionByProperty({ collides: true });
     aboveLayer.setDepth(10);
-    const debugGraphics = this.add.graphics().setAlpha(0.75);
-    worldLayer.renderDebug(debugGraphics, {
+
+    // Color the collision tiles
+    worldLayer.renderDebug(this.add.graphics().setAlpha(0.75), {
         tileColor: null, // Color of non-colliding tiles
         collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
         faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Color of colliding face edges
@@ -59,15 +66,12 @@ export default class MainScene extends Phaser.Scene {
         repeat: -1
     });
 
-    this.player = this.physics.add.sprite(100, 100, 'player', 1)
-        .setScale(2);
+    this.player = this.physics.add.sprite(100, 100, 'player', 1).setScale(2);
     
     this.physics.add.collider(this.player, worldLayer);
 
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
     this.cameras.main.startFollow(this.player);
-
-    this.debugGraphics = this.add.graphics();
 
     this.input.keyboard.on('down_67', function (event){
         this.showDebug = !this.showDebug;
@@ -75,14 +79,6 @@ export default class MainScene extends Phaser.Scene {
     });
 
     this.cursors = this.input.keyboard.createCursorKeys();
-
-    this.helpText = this.add.text(16, 16, '', {
-        fontSize: '20px',
-        fill: '#ffffff'
-    });
-    this.helpText.setScrollFactor(0);
-    this.updateHelpText();
-
 
     // Create Joystick
     this.joyStick = this.plugins.get('rexvirtualjoystickplugin').add(this, {
@@ -95,8 +91,6 @@ export default class MainScene extends Phaser.Scene {
     });
 
     this.scale.on('resize', this.resize, this);
-
-    
   }
 
   updateHelpText() {
@@ -106,8 +100,6 @@ export default class MainScene extends Phaser.Scene {
   }
 
   update(time, delta) {
-    this.fpsText.update()
-
     this.joyStick.setVisible(this.game.isTouch);
 
     this.player.body.setVelocity(0);
