@@ -73,11 +73,6 @@ export default class MainScene extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, this.map.widthInPixels, this.map.heightInPixels);
     this.cameras.main.startFollow(this.player);
 
-    this.input.keyboard.on('down_67', function (event){
-        this.showDebug = !this.showDebug;
-        this.drawDebug();
-    });
-
     this.cursors = this.input.keyboard.createCursorKeys();
 
     // Create Joystick
@@ -91,12 +86,6 @@ export default class MainScene extends Phaser.Scene {
     });
 
     this.scale.on('resize', this.resize, this);
-  }
-
-  updateHelpText() {
-    this.helpText.setText (
-      'Arrow keys to move.'
-    );  
   }
 
   update(time, delta) {
@@ -140,25 +129,10 @@ export default class MainScene extends Phaser.Scene {
     {
         this.player.anims.stop();
     }
-
   }
 
   resize(gameSize) {
     this.joyStick.setPosition(200, gameSize.height - 200);
   }
-
-  drawDebug () {
-    this.debugGraphics.clear();
-
-    if (this.showDebug) {
-        this.map.renderDebug(this.debugGraphics, {
-            tileColor: null, // Non-colliding tiles
-            collidingTileColor: new Phaser.Display.Color(243, 134, 48, 200), // Colliding tiles
-            faceColor: new Phaser.Display.Color(40, 39, 37, 255) // Colliding face edges
-        });
-    }  
-
-    this.updateHelpText();
-  } 
 
 }
